@@ -11,17 +11,16 @@ const rankTierMapping = {
     8: { name: "Immortal" }
 };
 
-
 const rankIconMapping = {
-    1: { rankImg: "../assets/image/herald.webp" },
-    2: { rankImg: "../assets/image/guardian.webp" },
-    3: { rankImg: "../assets/image/crusader.webp" },
-    4: { rankImg: "../assets/image/archon.webp" },
-    5: { rankImg: "../assets/image/legend.webp" },
-    6: { rankImg: "../assets/image/ancient.webp" },
-    7: { rankImg: "../assets/image/divine.webp" },
-    8: { rankImg: "../assets/image/immortal.webp" },
-    0: { rankImg: "../assets/image/unranked.webp" }
+    1: { rankImg: ".../assets/image/herald.webp" },
+    2: { rankImg: ".../assets/image/guardian.webp" },
+    3: { rankImg: ".../assets/image/crusader.webp" },
+    4: { rankImg: ".../assets/image/archon.webp" },
+    5: { rankImg: ".../assets/image/legend.webp" },
+    6: { rankImg: ".../assets/image/ancient.webp" },
+    7: { rankImg: ".../assets/image/divine.webp" },
+    8: { rankImg: ".../assets/image/immortal.webp" },
+    0: { rankImg: ".../assets/image/unranked.webp" }
   };
 
 
@@ -61,7 +60,6 @@ const getPlayerData = async () => {
     }
 
     const playerTop1HeroID = new getHeroData(0).heroID;
-    console.log(playerTop1HeroID);
     
 
     const elPlayerName = document.getElementById("playerName");
