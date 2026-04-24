@@ -37,15 +37,23 @@ const getPlayerData = async () => {
 
 
     const profileUrl = `https://api.opendota.com/api/players/${friendCode}`;
-    const heroesUrl = `https://api.opendota.com/api/players/${friendCode}/heroes`;
+    const playerHeroesUrl = `https://api.opendota.com/api/players/${friendCode}/heroes`;
+    const heroesUrl = `https://api.opendota.com/api/heroes`;
+    const heroStatsUrl = `https://api.opendota.com/api/heroStats`;
+    const baseHeroImgUrl = `https://cdn.cloudflare.steamstatic.com`;
 
-    const [profileRes, heroesRes] = await Promise.all([
+    const [profileRes, heroesRes, heroesDataRes, heroStatsRes] = await Promise.all([
         fetch(profileUrl),
-        fetch(heroesUrl)
+        fetch(playerHeroesUrl),
+        fetch(heroesUrl),
+        fetch(heroStatsUrl)
     ]);
 
     const playerData = await profileRes.json();
     const playerHeroData = await heroesRes.json();
+    const heroesData = await  heroesDataRes.json();
+    const heroStats = await heroStatsRes.json();
+
 
     const playerName = playerData.profile.personaname;
     const playerAvatar = playerData.profile.avatarfull;
@@ -54,16 +62,31 @@ const getPlayerData = async () => {
     const playerRank = rankTierMapping[medalIndex] ? rankTierMapping[medalIndex].name : "Uncalibrated";
     const playerRankIcon = rankIconMapping[medalIndex] ? rankIconMapping[medalIndex].rankImg : "./assets/image/uncalibrated.webp";
 
-    function getHeroData(a) {
+    function getPlayerHeroID(a) {
         const heroData = playerHeroData[a]
-        this.heroID = heroData.hero_id;
+        return this.heroID = heroData.hero_id;
     }
 
-    const playerTop1HeroID = new getHeroData(0).heroID;
-    
+    const playerTop1HeroID = new getPlayerHeroID(0).heroID;
+    const playerTop2HeroID = new getPlayerHeroID(1).heroID;
+    const playerTop3HeroID = new getPlayerHeroID(2).heroID;
+
+    function getHeroData(a) {
+       return heroesData.find(h => h.id === a);
+    };
+
+    function getHeroStats(a) {
+        return heroStats.find(h => h.id === a);
+    };
+
+    const playerTop1HeroStats = getHeroStats(playerTop1HeroID);
+    const playerTop2HeroStats = getHeroStats(playerTop2HeroID);
+    const playerTop3HeroStats = getHeroStats(playerTop3HeroID);
+
+
 
     const elPlayerName = document.getElementById("playerName");
-    elPlayerName.innerHTML = playerName;
+    elPlayerName.innerHTML =`<h5 class="bg-dark py-2 rounded border border-secondary"> ${playerName} </h5>`;
 
 
     const elPlayerRank = document.getElementById("playerRank");
@@ -74,6 +97,15 @@ const getPlayerData = async () => {
 
     const elPlayerFriendCode = document.getElementById("playerFriendCode");
     elPlayerFriendCode.innerHTML ="<b>Friend Code</b>: " + friendCode;
+
+    const elPlayerTop1HeroImg = document.getElementById("playerTop1HeroImg");
+    elPlayerTop1HeroImg.src = baseHeroImgUrl + playerTop1HeroStats.img;
+
+    const elPlayerTop2HeroImg = document.getElementById("playerTop2HeroImg");
+    elPlayerTop2HeroImg.src = baseHeroImgUrl + playerTop2HeroStats.img;
+
+    const elPlayerTop3HeroImg = document.getElementById("playerTop3HeroImg");
+    elPlayerTop3HeroImg.src = baseHeroImgUrl + playerTop3HeroStats.img;
 
 
 

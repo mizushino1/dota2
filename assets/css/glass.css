@@ -18,7 +18,7 @@
 
 
 .glass-card-red {
-    background: rgba(167, 39, 20, 0.40) !important; 
+    background: rgba(167, 39, 20, 0.60) !important; 
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
