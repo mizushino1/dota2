@@ -10,8 +10,9 @@
     <link href="./assets/css/glass.css" rel="stylesheet">
 </head>
 
-<body style="background-color: #212121;">
-    <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+<body class="" style="background-color: #212121;">
+    <nav class="navbar navbar-expand-lg bg-dark glass-card-red border-bottom border-body sticky-top"
+        data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand mx-5" href="#">
                 <img src="./assets/image/Menu Icon.svg" alt="Bootstrap" width="50" height="50">
@@ -45,8 +46,8 @@
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button class="btn btn-outline-danger" type="submit">Search</button>
+                    <input class="form-control me-2" type="search" placeholder="Player Friend Code" aria-label="friendCode" id="searchPlayerCode">
+                    <button class="btn btn-outline-danger" onclick="getPlayerData()">Search</button>
                 </form>
             </div>
         </div>
@@ -54,22 +55,27 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-md-4 mt-5 ms-5">
-                <div class="card glass-card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="Player Avatar" id="playerAvatar">
-                    
-                    <div class="card-body">
-                        <h5 class="card-title p-2 text-center text-light" id="playerName"></h5>
+            <div class="col-xs-12 col-md-12 col-lg-4 mt-5">
+                <div class="ms-lg-5">
+                    <div class="card glass-card mx-auto" style="width: 18rem;">
+                        <img src="..." class="card-img-top" alt="Player Avatar" id="playerAvatar">
+
+                        <div class="card-body">
+                            <h5 class="card-title p-2 text-center text-light" id="playerName"></h5>
+                        </div>
+
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item p-1 text-light" id="playerFriendCode"></li>
+                            <li class="list-group-item p-3 text-light" id="playerRank"></li>
+                        </ul>
                     </div>
-                
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item p-1 text-light" id="playerFriendCode"></li>
-                        <li class="list-group-item p-3 text-light" id="playerRank"></li>
-                    </ul>
                 </div>
             </div>
 
-            <div class="col-xs-12 col-md-8"></div>
+            <div class="col-xs-12 col-md-12 col-lg-7 glass-card mt-5" style="height: 1000px;">
+
+
+            </div>
         </div>
     </div>
 
