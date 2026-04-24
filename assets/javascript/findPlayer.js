@@ -20,7 +20,7 @@ const rankIconMapping = {
     6: { rankImg: "./assets/image/ancient.webp" },
     7: { rankImg: "./assets/image/divine.webp" },
     8: { rankImg: "./assets/image/immortal.webp" },
-    0: { rankImg: "./assets/image/unranked.webp" }
+    0: { rankImg: "./assets/image/uncalibrated.webp" }
   };
 
 
@@ -52,7 +52,7 @@ const getPlayerData = async () => {
     const tierValue = playerData.rank_tier;
     const medalIndex = Math.floor(tierValue / 10);
     const playerRank = rankTierMapping[medalIndex] ? rankTierMapping[medalIndex].name : "Uncalibrated";
-    const playerRankIcon = rankIconMapping[medalIndex] ? rankIconMapping[medalIndex].rankImg : "Uncalibrated";
+    const playerRankIcon = rankIconMapping[medalIndex] ? rankIconMapping[medalIndex].rankImg : "./assets/image/uncalibrated.webp";
 
     function getHeroData(a) {
         const heroData = playerHeroData[a]
