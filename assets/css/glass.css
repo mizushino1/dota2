@@ -16,10 +16,6 @@
 }
 
 
-.glass-card:hover {
-    background: rgba(255, 255, 255, 0.08) !important;
-    transition: 0.3s ease;
-}
 
 .glass-card-red {
     background: rgba(167, 39, 20, 0.40) !important; 

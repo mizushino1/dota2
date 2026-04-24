@@ -40,14 +40,13 @@ const getPlayerData = async () => {
     const profileUrl = `https://api.opendota.com/api/players/${friendCode}`;
     const heroesUrl = `https://api.opendota.com/api/players/${friendCode}/heroes`;
 
-    // 2. Fetch both (you can even do this simultaneously for speed!)
     const [profileRes, heroesRes] = await Promise.all([
         fetch(profileUrl),
         fetch(heroesUrl)
     ]);
 
     const playerData = await profileRes.json();
-    const heroData = await heroesRes.json();
+    const playerHeroData = await heroesRes.json();
 
     const playerName = playerData.profile.personaname;
     const playerAvatar = playerData.profile.avatarfull;
@@ -55,6 +54,14 @@ const getPlayerData = async () => {
     const medalIndex = Math.floor(tierValue / 10);
     const playerRank = rankTierMapping[medalIndex] ? rankTierMapping[medalIndex].name : "Uncalibrated";
     const playerRankIcon = rankIconMapping[medalIndex] ? rankIconMapping[medalIndex].rankImg : "Uncalibrated";
+
+    function getHeroData(a) {
+        const heroData = playerHeroData[a]
+        this.heroID = heroData.hero_id;
+    }
+
+    const playerTop1HeroID = new getHeroData(0).heroID;
+    console.log(playerTop1HeroID);
     
 
     const elPlayerName = document.getElementById("playerName");
